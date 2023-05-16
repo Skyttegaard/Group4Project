@@ -1,7 +1,7 @@
-package controller;
+package dbo;
 
 import model.Customer;
 
-public interface CustomerControllerIF {
+public interface CustomerDBIF {
 	public Customer findCustomer(String phoneNumber);
 }

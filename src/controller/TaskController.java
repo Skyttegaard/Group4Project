@@ -15,8 +15,8 @@ public class TaskController implements TaskControllerIF{
 	}
 
 	@Override
-	public void addCustomer(String phoneNumber) {
-		newTask.setPhoneNumber(phoneNumber);
+	public void addCustomer(int customerId) {
+		newTask.setCustomerId(customerId);
 		
 	}
 

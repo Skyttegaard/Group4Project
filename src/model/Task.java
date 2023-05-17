@@ -8,24 +8,24 @@ public class Task {
 	private Date date;
 	private String taskType;
 	private String status;
-	private String phoneNumber;
+	private int customerId;
 	
-	public Task(int taskId, String information, Date date, String taskType, String status, String phoneNumber) {
+	public Task(int taskId, String information, Date date, String taskType, String status, int customerId) {
 		this.taskId = taskId;
 		this.information = information;
 		this.date = date;
 		this.taskType = taskType;
 		this.status = status;
-		this.phoneNumber = phoneNumber;
+		this.customerId = customerId;
 	}
 	public Task() {
 		
 	}
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public int getCustomerId() {
+		return customerId;
 	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 	public String getInformation() {
 		return information;

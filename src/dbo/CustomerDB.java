@@ -3,6 +3,7 @@ package dbo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import model.Company;
 import model.Customer;
@@ -36,6 +37,12 @@ public class CustomerDB implements CustomerDBIF{
 			e.printStackTrace();
 		}
 		return buildObject(rs);
+	}
+	
+	public List<Customer> findCustomers(String phoneNumberPrefix){
+		
+		
+		return null;
 	}
 	
 	private Customer buildObject(ResultSet rs) {

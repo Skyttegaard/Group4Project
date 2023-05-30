@@ -9,13 +9,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ree extends JFrame {
+public class viewTask extends JFrame {
 	static Task task;
     private JButton backButton;
     private JButton confirmButton;
     private JPanel mainPanel;
 
-    public ree(Task task) {
+    public viewTask(Task task) {
         // Set the size of the JFrame
         setSize(400, 600);
 
@@ -28,8 +28,8 @@ public class ree extends JFrame {
         backButton.setPreferredSize(new Dimension(50, 50));
         backButton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-            	e ee = new e();}});
+            public void mouseClicked(MouseEvent mainView) {
+            	mainView ee = new mainView();}});
         
         ImageIcon icon = new ImageIcon("angle-left.png");
         JLabel iconLabel = new JLabel(icon);
@@ -40,7 +40,7 @@ public class ree extends JFrame {
         confirmButton = new JButton("Confirm");
         confirmButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {}});
+            public void actionPerformed(ActionEvent mainView) {}});
         topPanel.add(confirmButton, BorderLayout.EAST);
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(0, 1));
@@ -69,13 +69,16 @@ public class ree extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public static void main(String[] args) {
+    public static void main(Task task) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                ree reee = new ree(task);
+                viewTask reee = new viewTask(task);
                 reee.setVisible(true);
             }
         });
     }
+
+		
+	
 }

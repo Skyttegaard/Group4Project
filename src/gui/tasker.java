@@ -77,12 +77,12 @@ public class tasker extends JFrame {
 
         backButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-            	e ee = new e();}});
+            public void actionPerformed(ActionEvent mainView) {
+            	mainView mainview = new mainView();}});
 
         acceptButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent mainView) {
                 String phoneNumber = JOptionPane.showInputDialog(tasker.this, "Enter a phone number:");
                 if (phoneNumber != null && phoneNumber.matches("\\d{8}")) {
                     model.Customer customer = ffff.findCustomer(phoneNumber);
@@ -91,7 +91,7 @@ public class tasker extends JFrame {
          JOptionPane.showMessageDialog(tasker.this, "Phone number doenst work.");}}});
         clearButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent mainView) {
              commentTextArea.setText("");}});}
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {

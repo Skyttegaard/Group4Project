@@ -11,11 +11,11 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class e extends taskview {
+public class mainView extends taskview {
 	TaskController tasko = new TaskController();
 	TaskDB taskDB = new TaskDB();
 	
-    public e() {
+    public mainView() {
         super();
 
         ArrayList<Task> objectsList = taskDB.getAllTasks();
@@ -42,10 +42,14 @@ public class e extends taskview {
             JLabel label2 = new JLabel("\nTask status: " + obj.getStatus());
             panel.addMouseListener(new MouseAdapter() {
                 @Override
-                public void mouseClicked(MouseEvent e) {
+                public void mouseClicked(MouseEvent mainView) {
+                	
+                System.out.println("clicked");
                 int iko = obj.getTaskId();
+                System.out.println(iko);
                 Task ito = tasko.findTask(iko);
-                ree reee = new ree(ito);
+                viewTask viewtask = new viewTask(ito);
+                
                 }
             });
             panel.add(label);
@@ -61,6 +65,6 @@ public class e extends taskview {
 
 
 	public static void main(String[] args) {
-        SwingUtilities.invokeLater(e::new);
+        SwingUtilities.invokeLater(mainView::new);
     }
 }

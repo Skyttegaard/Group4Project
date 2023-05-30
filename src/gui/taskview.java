@@ -24,7 +24,7 @@ public class taskview extends JFrame {
         addPanel.setPreferredSize(new Dimension(50, 50));
         addPanel.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mouseClicked(MouseEvent mainView) {
             	tasker taske = new tasker();}});
         //Icon added
         ImageIcon addIcon = new ImageIcon("add.png"); 
@@ -61,16 +61,16 @@ public class taskview extends JFrame {
         //MouseListeners 
         button1Panel.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-            	e ee = new e();
+            public void mouseClicked(MouseEvent mainView) {
+            	mainView ee = new mainView();
             	}});
-        ImageIcon icon = new ImageIcon("icon (2).png"); 
+        ImageIcon icon = new ImageIcon("icon_2.png"); 
         JLabel iconLabel = new JLabel(icon);
         button1Panel.add(iconLabel);
 
         button2Panel.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mouseClicked(MouseEvent mainView) {
                 JOptionPane.showMessageDialog(taskview.this, "Button 2 clicked!");}});
         ImageIcon icon2= new ImageIcon("briefcase.png"); 
         JLabel iconLabel2 = new JLabel(icon2);
@@ -78,7 +78,7 @@ public class taskview extends JFrame {
 
         button3Panel.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mouseClicked(MouseEvent mainView) {
                 JOptionPane.showMessageDialog(taskview.this, "Button 3 clicked!");}});
         ImageIcon icon3= new ImageIcon("users-alt.png"); 
         JLabel iconLabel3 = new JLabel(icon3);
@@ -87,7 +87,7 @@ public class taskview extends JFrame {
         
          button4Panel.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mouseClicked(MouseEvent mainView) {
                 JOptionPane.showMessageDialog(taskview.this, "Button 4 clicked!");}});
         ImageIcon icon4= new ImageIcon("user.png"); 
         JLabel iconLabel4 = new JLabel(icon4);

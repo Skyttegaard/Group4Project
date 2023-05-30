@@ -114,7 +114,10 @@ public class WorkcardDB implements WorkcardDBIF{
 			workcardStmt.setInt(7, workcard.getFitterId());
 			workcardStmt.executeUpdate();
 			ResultSet rs = workcardStmt.getGeneratedKeys();
-			generatedKey = rs.getInt(1);
+			if(rs.next()) {
+				generatedKey = rs.getInt(1);
+				
+			}
 			
 		} catch(SQLException e) {
 			e.printStackTrace();

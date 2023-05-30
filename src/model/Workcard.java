@@ -27,6 +27,7 @@ public class Workcard {
 	}
 	public Workcard() {
 		materials = new ArrayList<MaterialLine>();
+		status = "In progress";
 	}
 	public int getTaskId() {
 		return taskId;
@@ -69,6 +70,9 @@ public class Workcard {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public void setWorkcardId(int workcardId) {
+		this.workcardId = workcardId;
 	}
 	public int getWorkcardId() {
 		return workcardId;

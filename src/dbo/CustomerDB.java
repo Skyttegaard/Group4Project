@@ -39,11 +39,7 @@ public class CustomerDB implements CustomerDBIF{
 		return buildObject(rs);
 	}
 	
-	public List<Customer> findCustomers(String phoneNumberPrefix){
-		
-		
-		return null;
-	}
+	
 	
 	private Customer buildObject(ResultSet rs) {
 		int id = 0;
@@ -85,7 +81,7 @@ public class CustomerDB implements CustomerDBIF{
 			e.printStackTrace();
 		}
 		
-		return null;
+		return customer;
 	}
 
 }

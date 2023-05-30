@@ -19,7 +19,8 @@ public class Task {
 		this.customerId = customerId;
 	}
 	public Task() {
-		
+		date = new Date();
+		status = "New";
 	}
 	public int getCustomerId() {
 		return customerId;

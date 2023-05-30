@@ -10,19 +10,24 @@ import model.Task;
 public class TaskDB implements TaskDBIF {
 
 	private static final String addTaskStmt ="INSERT INTO Task(Information, Date,TaskType,Status,CustomerID) VALUES (?,?,?,?,?)";
-	private PreparedStatement addTask;
+	private static final String deleteTaskStmt = "DELETE FROM Task WHERE TaskID = ?";
+	private static final String updateTaskStmt = "UPDATE Task SET Information = ?, CustomerID = ? WHERE TaskID = ?";
+	private static final String findTaskStmt = "SELECT * FROM Task WHERE TaskID = ?";
+	private PreparedStatement taskStmt;
 	@Override
 	public void addTask(Task newTask) {
 		try {
-			addTask = DBConnection.getInstance().getDBCon().prepareStatement(addTaskStmt);
-			addTask.setString(1, newTask.getInformation());
-			addTask.setDate(2, new java.sql.Date(newTask.getDate().getTime()));
-			addTask.setString(3, newTask.getTaskType());
-			addTask.setString(4, newTask.getStatus());
-			addTask.setInt(5, newTask.getCustomerId());
+			taskStmt = DBConnection.getInstance().getDBCon().prepareStatement(addTaskStmt);
+			taskStmt.setString(1, newTask.getInformation());
+			taskStmt.setDate(2, new java.sql.Date(newTask.getDate().getTime()));
+			taskStmt.setString(3, newTask.getTaskType());
+			taskStmt.setString(4, newTask.getStatus());
+			taskStmt.setInt(5, newTask.getCustomerId());
+			taskStmt.executeUpdate();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
+		
 	}
 	
 	
@@ -44,6 +49,48 @@ public class TaskDB implements TaskDBIF {
 		
 		return task;
 		
+	}
+
+
+	@Override
+	public void updateTask(Task newTask) {
+		try {
+			taskStmt = DBConnection.getInstance().getDBCon().prepareStatement(updateTaskStmt);
+			taskStmt.setString(1,newTask.getInformation());
+			taskStmt.setInt(2, newTask.getCustomerId());
+			taskStmt.setInt(3, newTask.getTaskId());
+			taskStmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+
+	@Override
+	public void deleteTask(int taskId) {
+		try {
+			taskStmt = DBConnection.getInstance().getDBCon().prepareStatement(deleteTaskStmt);
+			taskStmt.setInt(1, taskId);
+			taskStmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+
+	@Override
+	public Task findTask(int taskId) {
+		ResultSet rs = null;
+		try {
+			taskStmt = DBConnection.getInstance().getDBCon().prepareStatement(findTaskStmt);
+			taskStmt.setInt(1, taskId);
+			rs = taskStmt.executeQuery();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return buildObject(rs);
 	}
 
 }

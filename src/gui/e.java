@@ -1,22 +1,28 @@
 package gui;
 import javax.swing.*;
 
+import controller.TaskController;
+import dbo.TaskDB;
 import model.Task;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class e extends taskview {
+	TaskController tasko = new TaskController();
+	TaskDB taskDB = new TaskDB();
+	
     public e() {
         super();
 
-        ArrayList<Task> objectsList = new ArrayList<>();
+        ArrayList<Task> objectsList = taskDB.getAllTasks();
 
-        for (int i = 0; i < 66; i++) {
-            Task task = new Task(i + 1, "Some information", new Date(), "Some task type", "Some status", i + 1);
-            objectsList.add(task);
-        }
+
+        
+
 
         JScrollPane scrollPane = new JScrollPane();
         
@@ -31,10 +37,17 @@ public class e extends taskview {
             panel.setLayout(new FlowLayout(FlowLayout.LEFT));
             panel.setBackground(Color.WHITE);
             panel.setPreferredSize(new Dimension(180, 80));
-
             JLabel label = new JLabel("Task Id: " + obj.getTaskId());
             JLabel label1 = new JLabel("\nTasktype: " + obj.getTaskType());
             JLabel label2 = new JLabel("\nTask status: " + obj.getStatus());
+            panel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                int iko = obj.getTaskId();
+                Task ito = tasko.findTask(iko);
+                ree reee = new ree(ito);
+                }
+            });
             panel.add(label);
             panel.add(label1);
             panel.add(label2);

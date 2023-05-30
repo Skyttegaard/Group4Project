@@ -3,7 +3,9 @@ package dbo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import model.Task;
 
@@ -13,6 +15,7 @@ public class TaskDB implements TaskDBIF {
 	private static final String deleteTaskStmt = "DELETE FROM Task WHERE TaskID = ?";
 	private static final String updateTaskStmt = "UPDATE Task SET Information = ?, CustomerID = ? WHERE TaskID = ?";
 	private static final String findTaskStmt = "SELECT * FROM Task WHERE TaskID = ?";
+	private static final String findAllTaskStmt = "SELECT * FROM Task";
 	private PreparedStatement taskStmt;
 	@Override
 	public void addTask(Task newTask) {
@@ -28,6 +31,26 @@ public class TaskDB implements TaskDBIF {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public ArrayList<Task> getAllTasks(){
+		ArrayList<Task> tasks = new ArrayList<Task>();
+		try {
+			taskStmt = DBConnection.getInstance().getDBCon().prepareStatement(findAllTaskStmt);
+			ResultSet rs = taskStmt.executeQuery();
+			while(rs.next()) {
+				int id = rs.getInt(1);
+				String information = rs.getString(2);
+				Date date = rs.getDate(3);
+				String taskType = rs.getString(4);
+				String status = rs.getString(5);
+				int customerId = rs.getInt(6);
+				tasks.add(new Task(id,information, date,taskType,status,customerId));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return tasks;
 	}
 	
 	

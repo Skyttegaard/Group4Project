@@ -80,7 +80,7 @@ public class taskview extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JOptionPane.showMessageDialog(taskview.this, "Button 3 clicked!");}});
-        ImageIcon icon3= new ImageIcon("users-alt.png"); // Replace with the actual path to the PNG icon
+        ImageIcon icon3= new ImageIcon("users-alt.png"); 
         JLabel iconLabel3 = new JLabel(icon3);
         button3Panel.add(iconLabel3);
 
@@ -102,7 +102,7 @@ public class taskview extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.gridx = 0;
-        gbc.insets = new Insets(0, 10, 0, 10); // Add some horizontal spacing between panels
+        gbc.insets = new Insets(0, 10, 0, 10); 
         bottomPanel.add(button1Panel, gbc);
         gbc.gridx = 1;
         bottomPanel.add(button2Panel, gbc);
